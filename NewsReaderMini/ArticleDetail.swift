@@ -21,6 +21,6 @@ struct ArticleDetail: View {
 
 struct ArticleDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleDetail(article: Article(thumbnailImage: "empty", publisher: "Yahoo Sports", title: "News Headline Goes here"))
+        ArticleDetail(article: Article(id: 0, thumbnailImage: "empty", publisher: "Yahoo Sports", title: "News Headline Goes here"))
     }
 }

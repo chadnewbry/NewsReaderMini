@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Article {
+struct Article: Identifiable {
+    var id: Int
     var thumbnailImage: String
     var publisher: String
     var title: String

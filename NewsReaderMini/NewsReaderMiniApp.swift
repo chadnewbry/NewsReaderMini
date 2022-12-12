@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct NewsReaderMiniApp: App {
+    
+    private var articleManager = ArticleManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NewsStream(newsStreamViewModel: NewsStreamViewModel(articleManager: articleManager))
+                
         }
     }
 }
