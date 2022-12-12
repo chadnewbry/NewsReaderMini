@@ -11,6 +11,8 @@
 		249728C42947B7C10054BB56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249728C32947B7C10054BB56 /* ContentView.swift */; };
 		249728C62947B7C30054BB56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249728C52947B7C30054BB56 /* Assets.xcassets */; };
 		249728C92947B7C30054BB56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249728C82947B7C30054BB56 /* Preview Assets.xcassets */; };
+		249728D02947BA000054BB56 /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249728CF2947BA000054BB56 /* ArticleDetail.swift */; };
+		249728D22947BA160054BB56 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249728D12947BA160054BB56 /* Article.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		249728C32947B7C10054BB56 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		249728C52947B7C30054BB56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		249728C82947B7C30054BB56 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		249728CF2947BA000054BB56 /* ArticleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
+		249728D12947BA160054BB56 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				249728C32947B7C10054BB56 /* ContentView.swift */,
 				249728C52947B7C30054BB56 /* Assets.xcassets */,
 				249728C72947B7C30054BB56 /* Preview Content */,
+				249728CF2947BA000054BB56 /* ArticleDetail.swift */,
+				249728D12947BA160054BB56 /* Article.swift */,
 			);
 			path = NewsReaderMini;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249728D22947BA160054BB56 /* Article.swift in Sources */,
+				249728D02947BA000054BB56 /* ArticleDetail.swift in Sources */,
 				249728C42947B7C10054BB56 /* ContentView.swift in Sources */,
 				249728C22947B7C10054BB56 /* NewsReaderMiniApp.swift in Sources */,
 			);
