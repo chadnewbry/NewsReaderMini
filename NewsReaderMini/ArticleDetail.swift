@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct ArticleDetail: View {
+    
+    public private (set) var article: Article
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(article.title)
+            Text(article.publisher)
+        }
     }
 }
 
 struct ArticleDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleDetail()
+        ArticleDetail(article: Article(thumbnailImage: "empty", publisher: "Yahoo Sports", title: "News Headline Goes here"))
     }
 }
