@@ -13,9 +13,9 @@ struct NewsStream: View {
     
     var body: some View {
         List {
-            ForEach (newsStreamViewModel.articles) { article in
-                Text(article.title)
-            }
+//            ForEach (newsStreamViewModel.articles) { article in
+//                Text(article.title)
+//            }
         }
     }
 }

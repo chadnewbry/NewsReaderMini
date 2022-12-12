@@ -13,14 +13,14 @@ struct ArticleDetail: View {
     
     var body: some View {
         VStack {
-            Text(article.title)
-            Text(article.publisher)
+//            Text(article.title)
+//            Text(article.publisher)
         }
     }
 }
 
 struct ArticleDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleDetail(article: Article(id: 0, thumbnailImage: "empty", publisher: "Yahoo Sports", title: "News Headline Goes here"))
+        ArticleDetail(article: Article(article_id: "0")) // Article(id: "0", publisher: "Yahoo Sports", title: "News Headline Goes here"))
     }
 }

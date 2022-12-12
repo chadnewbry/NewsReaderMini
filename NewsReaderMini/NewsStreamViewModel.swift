@@ -15,5 +15,18 @@ final class NewsStreamViewModel: ObservableObject {
 
     init(articleManager: ArticleManager) {
         self.articleManager = articleManager
+        articles = articleManager.articles
+        
+        Task {
+            do {
+                articles = try await articleManager.refresh()
+            } catch {
+                
+            }
+        }
+        
+        
+    
+        
     }
 }
