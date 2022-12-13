@@ -32,7 +32,6 @@ final class NewsStreamViewModel: ObservableObject {
     }
     
     func fetchNextPage() {
-       // TODO fetch the next 10 items
         Task {
             do {
                 articles = try await articleManager.fetchNextPage()

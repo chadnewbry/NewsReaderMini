@@ -46,8 +46,6 @@ struct Article: Identifiable, Codable {
                 preconditionFailure("No resolutions provided")
             }
             
-            // TODO: make a resolution model
-            //       that handles serializing this data
             for resolution in resolutions {
                 
                 guard let tag = resolution["tag"] as? String else {
