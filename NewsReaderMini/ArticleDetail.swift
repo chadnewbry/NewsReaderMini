@@ -13,9 +13,13 @@ struct ArticleDetail: View {
     
     var body: some View {
         VStack {
-//            Text(article.title)
-//            Text(article.publisher)
+            Text(article.title)
+            Text(article.publisher)
+                .font(.caption2)
+            HTMLStringView(htmlContent: article.content)
         }
+        .navigationTitle("Article")
+        
     }
 }
 

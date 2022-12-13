@@ -24,9 +24,5 @@ final class NewsStreamViewModel: ObservableObject {
                 
             }
         }
-        
-        
-    
-        
     }
 }

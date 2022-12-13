@@ -12,13 +12,28 @@ struct NewsStream: View {
     @StateObject var newsStreamViewModel: NewsStreamViewModel
     
     var body: some View {
-        List {
-            ForEach (newsStreamViewModel.articles) { article in
-//                Text(article.id)
-//                Text(article.article_id)
-                Text(article.title)
-                Text(article.publisher)
-            }
+        NavigationView {
+            List {
+                ForEach (newsStreamViewModel.articles) { article in
+                    NavigationLink {
+    //                        LandmarkDetail(landmark: landmark)
+                        ArticleDetail(article: article)
+                    } label: {
+                        // TODO: move this into it's own view
+                        VStack {
+                            if let imageURL = article.squareImageURL {
+                                AsyncImage(url: URL(string: imageURL))
+                            }
+                            
+                            Text(article.title)
+                            Spacer()
+                            Text(article.publisher)
+                            .font(.caption2)
+                            Spacer()
+                        }
+                    }
+                }
+            }.navigationBarTitle("Articles")
         }
     }
 }
@@ -28,3 +43,4 @@ struct NewsStream_Previews: PreviewProvider {
         NewsStream(newsStreamViewModel: NewsStreamViewModel(articleManager: ArticleManager()))
     }
 }
+    
