@@ -16,26 +16,38 @@ class ArticleManager {
     ]
     
     func refresh() async throws -> [Article] {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "doubleplay-sports-yql.media.yahoo.com"
-        components.path = "/v3/sports_news"
-        components.queryItems = [
-            URLQueryItem(name: "leagues", value: "sports"),
-            URLQueryItem(name: "stream_type", value: "headlines"),
-            URLQueryItem(name: "count", value: "10"),
-            URLQueryItem(name: "region", value: "US"),
-            URLQueryItem(name: "lang", value: "en-US")
-        ]
+//        var components = URLComponents()
+//        components.scheme = "https"
+//        components.host = "doubleplay-sports-yql.media.yahoo.com"
+//        components.path = "/v3/sports_news"
+//        components.queryItems = [
+//            URLQueryItem(name: "leagues", value: "sports"),
+//            URLQueryItem(name: "stream_type", value: "headlines"),
+//            URLQueryItem(name: "count", value: "10"),
+//            URLQueryItem(name: "region", value: "US"),
+//            URLQueryItem(name: "lang", value: "en-US")
+//        ]
+//
+//
+//        guard let url = components.url else {
+////            print("failed to construct URL")
+//            preconditionFailure("Failed to construct URL")
+//        }
+//
+//        let (data, _) = try await URLSession.shared.data(from: url)
         
-        
-        guard let url = components.url else {
-//            print("failed to construct URL")
-            preconditionFailure("Failed to construct URL")
+        var data: Data
+        let filename = "response.json"
+        guard let file = Bundle.main.url(forResource: "response.json", withExtension: nil)
+            else {
+                fatalError("Couldn't find \(filename) in main bundle.")
         }
 
-        let (data, _) = try await URLSession.shared.data(from: url)
-        
+        do {
+            data = try Data(contentsOf: file)
+        } catch {
+            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+        }
         
 //        // TODO: handle errors more elegantly
 //        let task = URLSession.shared.dataTask(with: url) {
@@ -48,38 +60,26 @@ class ArticleManager {
 //
 //        }
         
-        guard let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+        guard let dict = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             preconditionFailure("Failed to parse JSON from Data")
         }
         
-        guard let itemsDict = json["items"] as? [String : Any]  else {
-                preconditionFailure("Failed to get items from data")
+        guard let items = dict["items"] as? [String: Any] else {
+            preconditionFailure("Failed to get items from data")
+        }
+
+        guard let result = items["result"] as? [[String: Any]] else {
+            preconditionFailure("Failed to get result array")
         }
         
-//        print(itemsDict)
+        var articles = [Article]()
         
-//        print(itemsDict)
-        guard let itemResults = itemsDict["result"] as? [[String: Any]] else {
-            preconditionFailure("Failed to get Articles from data")
+        for d in result {
+            // iterate over result dictionary and serialize
+            
+            let article = Article(from: d)
+            articles.append(article)
         }
-        
-        do {
-//            let json = try JSONSerialization.data(withJSONObject: itemResults.first!)
-//            let decoder = JSONDecoder()
-//            decoder.keyDecodingStrategy = .convertFromSnakeCase
-//            
-//            let stringJSON = String(data: json, encoding: String.Encoding.utf8)
-//            
-//            print("first item: \(stringJSON)")
-            
-            
-            
-            return try [decoder.decode(Article.self, from: json)]
-        } catch {
-            print(error)
-        }
-        
-        
         
 //        guard let first = itemResults.first as? [String: Any] else {
 //            preconditionFailure()
@@ -87,7 +87,7 @@ class ArticleManager {
         
 //        print(itemResults.first)
         
-        return [Article]()
+        return articles
 //        return itemResults
 //        }
         

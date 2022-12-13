@@ -11,9 +11,12 @@ struct MainImage: Codable {
     var original_url: String
 }
 
-struct Article: Codable {
+struct Article: Identifiable, Codable {
     
-    var article_id: Int
+    var id: String
+    var title: String
+    var publisher: String
+    
 //    var main_image: MainImage
     
 //    enum CodingKeys: String {
@@ -23,17 +26,39 @@ struct Article: Codable {
     
 //    var uuid: String
 //    var main_image: String
-//    var publisher: String
-//    var title: String
+
+    
     
     // now you define the coding keys
 //    enum CodingKeys: String {
 //        case id = "article_id"
 ////        case publisher, title
 //    }
+    
+    init() {
+        self.id = "00000"
+        self.publisher = "Argentina Daily News"
+        self.title = "Messi Advances in the World Cup"
+    }
+    
+    init(from dict: [String: Any]) {
+        
+        guard let id = dict["article_id"] as? String else {
+            preconditionFailure("unable to read article_id from dict")
+        }
+        
+        guard let title = dict["title"] as? String else {
+            preconditionFailure("unable to read title from dict")
+        }
+        
+        guard let publisher = dict["publisher"] as? String else {
+            preconditionFailure("Unable to read publisher from dict")
+        }
+        
+        
+        
+        self.id = id
+        self.title = title
+        self.publisher = publisher
+    }
 }
-
-extension Article: Identifiable {
-    var id: String { return String(article_id)}
-}
-
