@@ -11,41 +11,10 @@ class ArticleManager {
         
     private var articles = [Article]()
     
-//    private var firstTenArticles = [Article]
-//    private var uuidArticles = [Article]
-    
-    
     var nextUUIDs = [String]()
     var startIndex = 0
     
     func refresh() async throws -> [Article] {
-        
-  
-        // load data from JSON file
-//        var data: Data
-//        let filename = "response.json"
-//        guard let file = Bundle.main.url(forResource: "response.json", withExtension: nil)
-//            else {
-//                fatalError("Couldn't find \(filename) in main bundle.")
-//        }
-//
-//        do {
-//            data = try Data(contentsOf: file)
-//        } catch {
-//            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-//        }
-        
-//        // TODO: handle errors more elegantly
-//        let task = URLSession.shared.dataTask(with: url) {
-//        data, response, error in
-        
-//        guard let data = data else {
-//
-//            preconditionFailure("Failed to parse data from the networking request")
-////                print(json)
-//
-//        }
-        
         var components = URLComponents()
         components.scheme = "https"
         components.host = "doubleplay-sports-yql.media.yahoo.com"
@@ -59,7 +28,6 @@ class ArticleManager {
         ]
         
         try await articles = helper(components: components)
-        
         
         return articles
     }
@@ -109,6 +77,8 @@ class ArticleManager {
                     nextUUIDs.append(uuid)
                 }
             }
+            
+            startIndex = 0
         }
         
         return articles
@@ -141,7 +111,32 @@ class ArticleManager {
         return articles
     }
     
-    
+//    func loadFromJSON() {
+        // load data from JSON file
+//        var data: Data
+//        let filename = "response.json"
+//        guard let file = Bundle.main.url(forResource: "response.json", withExtension: nil)
+//            else {
+//                fatalError("Couldn't find \(filename) in main bundle.")
+//        }
+//
+//        do {
+//            data = try Data(contentsOf: file)
+//        } catch {
+//            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+//        }
+        
+//        // TODO: handle errors more elegantly
+//        let task = URLSession.shared.dataTask(with: url) {
+//        data, response, error in
+        
+//        guard let data = data else {
+//
+//            preconditionFailure("Failed to parse data from the networking request")
+////                print(json)
+//
+//        }
+//    }
 }
 
 
