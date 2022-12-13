@@ -78,6 +78,8 @@ class ArticleManager {
                 }
             }
             
+            // every time we reload UUIDs we want to
+            // reset the start index
             startIndex = 0
         }
         
@@ -110,33 +112,6 @@ class ArticleManager {
         
         return articles
     }
-    
-//    func loadFromJSON() {
-        // load data from JSON file
-//        var data: Data
-//        let filename = "response.json"
-//        guard let file = Bundle.main.url(forResource: "response.json", withExtension: nil)
-//            else {
-//                fatalError("Couldn't find \(filename) in main bundle.")
-//        }
-//
-//        do {
-//            data = try Data(contentsOf: file)
-//        } catch {
-//            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-//        }
-        
-//        // TODO: handle errors more elegantly
-//        let task = URLSession.shared.dataTask(with: url) {
-//        data, response, error in
-        
-//        guard let data = data else {
-//
-//            preconditionFailure("Failed to parse data from the networking request")
-////                print(json)
-//
-//        }
-//    }
 }
 
 

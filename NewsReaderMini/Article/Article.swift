@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct MainImage: Codable {
-    var original_url: String
-}
-
 struct Article: Identifiable, Codable {
     
     var id: String
@@ -19,25 +15,7 @@ struct Article: Identifiable, Codable {
     var content: String
     var squareImageURL: String?
     var publishedAt: Date
-    
-//    var main_image: MainImage
-    
-//    enum CodingKeys: String {
-//        case id = "article_id"
-//    }
-    
-    
-//    var uuid: String
-//    var main_image: String
-
-    
-    
-    // now you define the coding keys
-//    enum CodingKeys: String {
-//        case id = "article_id"
-////        case publisher, title
-//    }
-    
+        
     init() {
         self.id = "00000"
         self.publisher = "Argentina Daily News"
