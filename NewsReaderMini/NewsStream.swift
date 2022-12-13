@@ -9,13 +9,15 @@ import SwiftUI
 
 struct NewsStream: View {
     
-    var newsStreamViewModel: NewsStreamViewModel
+    @StateObject var newsStreamViewModel: NewsStreamViewModel
     
     var body: some View {
         List {
-//            ForEach (newsStreamViewModel.articles) { article in
+            ForEach (newsStreamViewModel.articles) { article in
+//                Text(article.article_id)
+                
 //                Text(article.title)
-//            }
+            }
         }
     }
 }

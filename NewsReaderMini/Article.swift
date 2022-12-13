@@ -7,12 +7,15 @@
 
 import Foundation
 
-
+struct MainImage: Codable {
+    var original_url: String
+}
 
 struct Article: Codable {
     
-    var article_id: String
-        
+    var article_id: Int
+//    var main_image: MainImage
+    
 //    enum CodingKeys: String {
 //        case id = "article_id"
 //    }
@@ -31,6 +34,6 @@ struct Article: Codable {
 }
 
 extension Article: Identifiable {
-    var id: String { return article_id}
+    var id: String { return String(article_id)}
 }
 

@@ -21,6 +21,6 @@ struct ArticleDetail: View {
 
 struct ArticleDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleDetail(article: Article(article_id: "0")) // Article(id: "0", publisher: "Yahoo Sports", title: "News Headline Goes here"))
+        ArticleDetail(article: Article(article_id: 0)) //, publisher: "Yahoo Sports", title: "News Headline Goes here")) // main_image: MainImage(original_url: "https://s.yimg.com/am/60d/24e76087769c3d5c4806729f1f497c4f")
     }
 }

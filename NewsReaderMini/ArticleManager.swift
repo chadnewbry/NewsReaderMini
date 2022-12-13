@@ -52,8 +52,6 @@ class ArticleManager {
             preconditionFailure("Failed to parse JSON from Data")
         }
         
-        
-                
         guard let itemsDict = json["items"] as? [String : Any]  else {
                 preconditionFailure("Failed to get items from data")
         }
@@ -61,11 +59,33 @@ class ArticleManager {
 //        print(itemsDict)
         
 //        print(itemsDict)
-        guard let itemResults = itemsDict["result"] as? [Any] else {
+        guard let itemResults = itemsDict["result"] as? [[String: Any]] else {
             preconditionFailure("Failed to get Articles from data")
         }
         
-        print(itemResults.first)
+        do {
+//            let json = try JSONSerialization.data(withJSONObject: itemResults.first!)
+//            let decoder = JSONDecoder()
+//            decoder.keyDecodingStrategy = .convertFromSnakeCase
+//            
+//            let stringJSON = String(data: json, encoding: String.Encoding.utf8)
+//            
+//            print("first item: \(stringJSON)")
+            
+            
+            
+            return try [decoder.decode(Article.self, from: json)]
+        } catch {
+            print(error)
+        }
+        
+        
+        
+//        guard let first = itemResults.first as? [String: Any] else {
+//            preconditionFailure()
+//        }
+        
+//        print(itemResults.first)
         
         return [Article]()
 //        return itemResults
