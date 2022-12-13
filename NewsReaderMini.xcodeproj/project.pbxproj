@@ -90,14 +90,11 @@
 			children = (
 				249728DB294813EA0054BB56 /* HTMLStringView.swift */,
 				249728D92947F89A0054BB56 /* response.json */,
-				249728D32947BB710054BB56 /* NewsStream.swift */,
+				249728F32948BA6A0054BB56 /* NewsStream */,
 				249728C12947B7C10054BB56 /* NewsReaderMiniApp.swift */,
 				249728C52947B7C30054BB56 /* Assets.xcassets */,
 				249728C72947B7C30054BB56 /* Preview Content */,
-				249728CF2947BA000054BB56 /* ArticleDetail.swift */,
-				249728D12947BA160054BB56 /* Article.swift */,
-				249728D52947BBF90054BB56 /* ArticleManager.swift */,
-				249728D72947BC720054BB56 /* NewsStreamViewModel.swift */,
+				249728F22948BA500054BB56 /* Article */,
 			);
 			path = NewsReaderMini;
 			sourceTree = "<group>";
@@ -123,6 +120,25 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		249728F22948BA500054BB56 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				249728CF2947BA000054BB56 /* ArticleDetail.swift */,
+				249728D12947BA160054BB56 /* Article.swift */,
+				249728D52947BBF90054BB56 /* ArticleManager.swift */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		249728F32948BA6A0054BB56 /* NewsStream */ = {
+			isa = PBXGroup;
+			children = (
+				249728D32947BB710054BB56 /* NewsStream.swift */,
+				249728D72947BC720054BB56 /* NewsStreamViewModel.swift */,
+			);
+			path = NewsStream;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
