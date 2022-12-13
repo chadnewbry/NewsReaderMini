@@ -9,45 +9,31 @@ import Foundation
 
 class ArticleManager {
         
-    let articles: [Article] = [
-//        Article(id: "0", publisher: "Chad", title: "Another day in the park"),
-//        Article(id: "1", publisher: "Argentinia Times", title: "Messi Advances to the next round"),
-//        Article(id: "2", publisher: "Spanish Times", title: "Ronaldo out of the World Cup")
-    ]
+    private var articles = [Article]()
+    
+//    private var firstTenArticles = [Article]
+//    private var uuidArticles = [Article]
+    
+    
+    var nextUUIDs = [String]()
+    var startIndex = 0
     
     func refresh() async throws -> [Article] {
-//        var components = URLComponents()
-//        components.scheme = "https"
-//        components.host = "doubleplay-sports-yql.media.yahoo.com"
-//        components.path = "/v3/sports_news"
-//        components.queryItems = [
-//            URLQueryItem(name: "leagues", value: "sports"),
-//            URLQueryItem(name: "stream_type", value: "headlines"),
-//            URLQueryItem(name: "count", value: "10"),
-//            URLQueryItem(name: "region", value: "US"),
-//            URLQueryItem(name: "lang", value: "en-US")
-//        ]
-//
-//
-//        guard let url = components.url else {
-////            print("failed to construct URL")
-//            preconditionFailure("Failed to construct URL")
+        
+  
+        // load data from JSON file
+//        var data: Data
+//        let filename = "response.json"
+//        guard let file = Bundle.main.url(forResource: "response.json", withExtension: nil)
+//            else {
+//                fatalError("Couldn't find \(filename) in main bundle.")
 //        }
 //
-//        let (data, _) = try await URLSession.shared.data(from: url)
-        
-        var data: Data
-        let filename = "response.json"
-        guard let file = Bundle.main.url(forResource: "response.json", withExtension: nil)
-            else {
-                fatalError("Couldn't find \(filename) in main bundle.")
-        }
-
-        do {
-            data = try Data(contentsOf: file)
-        } catch {
-            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-        }
+//        do {
+//            data = try Data(contentsOf: file)
+//        } catch {
+//            fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+//        }
         
 //        // TODO: handle errors more elegantly
 //        let task = URLSession.shared.dataTask(with: url) {
@@ -59,6 +45,31 @@ class ArticleManager {
 ////                print(json)
 //
 //        }
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "doubleplay-sports-yql.media.yahoo.com"
+        components.path = "/v3/sports_news"
+        components.queryItems = [
+            URLQueryItem(name: "leagues", value: "sports"),
+            URLQueryItem(name: "stream_type", value: "headlines"),
+            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "region", value: "US"),
+            URLQueryItem(name: "lang", value: "en-US")
+        ]
+        
+        try await articles = helper(components: components)
+        
+        
+        return articles
+    }
+    
+    func helper(components: URLComponents, parseUUIDs: Bool = true ) async throws -> [Article] {
+        guard let url = components.url else {
+            preconditionFailure("Failed to construct URL")
+        }
+
+        let (data, _) = try await URLSession.shared.data(from: url)
         
         guard let dict = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             preconditionFailure("Failed to parse JSON from Data")
@@ -81,44 +92,57 @@ class ArticleManager {
             articles.append(article)
         }
         
-//        guard let first = itemResults.first as? [String: Any] else {
-//            preconditionFailure()
-//        }
-        
-//        print(itemResults.first)
+        // parse out the more section of UUIDs
+        if parseUUIDs {
+            guard let more = dict["more"] as? [String: Any] else {
+                preconditionFailure("Unable to parse more dictionary")
+            }
+            
+            guard let resultArray = more["result"] as? [[String: Any]] else {
+                preconditionFailure("Unable to parse result array")
+            }
+            
+            nextUUIDs = [String]()
+            
+            for d in resultArray {
+                if let uuid = d["uuid"] as? String {
+                    nextUUIDs.append(uuid)
+                }
+            }
+        }
         
         return articles
-//        return itemResults
-//        }
-        
-//        task.resume()
     }
+    
+    
+    func fetchNextPage() async throws -> [Article] {
+        // todo: merge component contruction
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "doubleplay-sports-yql.media.yahoo.com"
+        components.path = "/v3/news_items"
+        
+        if startIndex+10 >= nextUUIDs.count {
+            // return the existing articles as we don't want to go out of bounds of our array
+            return articles
+        }
+        
+        let uuids = nextUUIDs[startIndex..<startIndex+10]
+        startIndex+=10
+        
+        components.queryItems = [URLQueryItem(name: "uuids", value: uuids.joined(separator: ","))]
+        
+        var newArticles = [Article]()
+        try await newArticles = helper(components: components, parseUUIDs: false)
+        
+        // add the new articles we find to our existing articles
+        articles += newArticles
+        
+        return articles
+    }
+    
+    
 }
-          
-            
-//
-//                if let data = data {
-//
-//
-//
-               
-
-//                    do {
-//                        let decoder = JSONDecoder()
-////                        return try decoder.decode(Article, from: data)
-//                    } catch {
-////                        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
-//                    }
-
-
-//                    var s = String(decoding: data, as: UTF8.self)
-//                    print(s)
-//                    label.text =
-//                } else {
-////                    label.text = error?.localizedDescription
-//                }
-//            }
-//        }
 
 
     

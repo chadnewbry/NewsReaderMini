@@ -16,7 +16,6 @@ struct NewsStream: View {
             List {
                 ForEach (newsStreamViewModel.articles) { article in
                     NavigationLink {
-    //                        LandmarkDetail(landmark: landmark)
                         ArticleDetail(article: article)
                     } label: {
                         // TODO: move this into it's own view
@@ -33,7 +32,15 @@ struct NewsStream: View {
                         }
                     }
                 }
+                
+                ProgressView()
+                .onAppear {
+                    newsStreamViewModel.fetchNextPage()
+                }
             }.navigationBarTitle("Articles")
+                .refreshable {
+                    newsStreamViewModel.refresh()
+                }
         }
     }
 }

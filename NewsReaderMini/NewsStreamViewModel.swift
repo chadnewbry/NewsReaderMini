@@ -7,16 +7,21 @@
 
 import Foundation
 
+@MainActor
 final class NewsStreamViewModel: ObservableObject {
     
-    var articleManager: ArticleManager
+    private var articleManager: ArticleManager
     
     @Published var articles: [Article] = []
 
     init(articleManager: ArticleManager) {
         self.articleManager = articleManager
-        articles = articleManager.articles
-        
+        refresh()
+    }
+    
+    // MARK: Public Methods
+    
+    func refresh() {
         Task {
             do {
                 articles = try await articleManager.refresh()
@@ -25,4 +30,17 @@ final class NewsStreamViewModel: ObservableObject {
             }
         }
     }
+    
+    func fetchNextPage() {
+       // TODO fetch the next 10 items
+        Task {
+            do {
+                articles = try await articleManager.fetchNextPage()
+            } catch {
+                
+            }
+        }
+    }
+    
+    
 }
