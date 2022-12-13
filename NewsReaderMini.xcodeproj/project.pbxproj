@@ -17,7 +17,19 @@
 		249728D82947BC720054BB56 /* NewsStreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249728D72947BC720054BB56 /* NewsStreamViewModel.swift */; };
 		249728DA2947F89A0054BB56 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 249728D92947F89A0054BB56 /* response.json */; };
 		249728DC294813EA0054BB56 /* HTMLStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249728DB294813EA0054BB56 /* HTMLStringView.swift */; };
+		249728E92948B84A0054BB56 /* NewsReaderMiniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249728E82948B84A0054BB56 /* NewsReaderMiniTests.swift */; };
+		249728F12948B9BD0054BB56 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 249728F02948B9BD0054BB56 /* SnapshotTesting */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		249728EA2948B84A0054BB56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 249728B62947B7C10054BB56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 249728BD2947B7C10054BB56;
+			remoteInfo = NewsReaderMini;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		249728BE2947B7C10054BB56 /* NewsReaderMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsReaderMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +43,8 @@
 		249728D72947BC720054BB56 /* NewsStreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStreamViewModel.swift; sourceTree = "<group>"; };
 		249728D92947F89A0054BB56 /* response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 		249728DB294813EA0054BB56 /* HTMLStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringView.swift; sourceTree = "<group>"; };
+		249728E62948B84A0054BB56 /* NewsReaderMiniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsReaderMiniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		249728E82948B84A0054BB56 /* NewsReaderMiniTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderMiniTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +55,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		249728E32948B84A0054BB56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				249728F12948B9BD0054BB56 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -48,7 +70,9 @@
 			isa = PBXGroup;
 			children = (
 				249728C02947B7C10054BB56 /* NewsReaderMini */,
+				249728E72948B84A0054BB56 /* NewsReaderMiniTests */,
 				249728BF2947B7C10054BB56 /* Products */,
+				249728EF2948B9BD0054BB56 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				249728BE2947B7C10054BB56 /* NewsReaderMini.app */,
+				249728E62948B84A0054BB56 /* NewsReaderMiniTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +110,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		249728E72948B84A0054BB56 /* NewsReaderMiniTests */ = {
+			isa = PBXGroup;
+			children = (
+				249728E82948B84A0054BB56 /* NewsReaderMiniTests.swift */,
+			);
+			path = NewsReaderMiniTests;
+			sourceTree = "<group>";
+		};
+		249728EF2948B9BD0054BB56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,9 +141,32 @@
 			dependencies = (
 			);
 			name = NewsReaderMini;
+			packageProductDependencies = (
+			);
 			productName = NewsReaderMini;
 			productReference = 249728BE2947B7C10054BB56 /* NewsReaderMini.app */;
 			productType = "com.apple.product-type.application";
+		};
+		249728E52948B84A0054BB56 /* NewsReaderMiniTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 249728EC2948B84A0054BB56 /* Build configuration list for PBXNativeTarget "NewsReaderMiniTests" */;
+			buildPhases = (
+				249728E22948B84A0054BB56 /* Sources */,
+				249728E32948B84A0054BB56 /* Frameworks */,
+				249728E42948B84A0054BB56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				249728EB2948B84A0054BB56 /* PBXTargetDependency */,
+			);
+			name = NewsReaderMiniTests;
+			packageProductDependencies = (
+				249728F02948B9BD0054BB56 /* SnapshotTesting */,
+			);
+			productName = NewsReaderMiniTests;
+			productReference = 249728E62948B84A0054BB56 /* NewsReaderMiniTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -118,6 +181,10 @@
 					249728BD2947B7C10054BB56 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
+					249728E52948B84A0054BB56 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 249728BD2947B7C10054BB56;
+					};
 				};
 			};
 			buildConfigurationList = 249728B92947B7C10054BB56 /* Build configuration list for PBXProject "NewsReaderMini" */;
@@ -129,11 +196,15 @@
 				Base,
 			);
 			mainGroup = 249728B52947B7C10054BB56;
+			packageReferences = (
+				249728DD2948B7E30054BB56 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 249728BF2947B7C10054BB56 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				249728BD2947B7C10054BB56 /* NewsReaderMini */,
+				249728E52948B84A0054BB56 /* NewsReaderMiniTests */,
 			);
 		};
 /* End PBXProject section */
@@ -146,6 +217,13 @@
 				249728C92947B7C30054BB56 /* Preview Assets.xcassets in Resources */,
 				249728DA2947F89A0054BB56 /* response.json in Resources */,
 				249728C62947B7C30054BB56 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		249728E42948B84A0054BB56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +244,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		249728E22948B84A0054BB56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				249728E92948B84A0054BB56 /* NewsReaderMiniTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		249728EB2948B84A0054BB56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 249728BD2947B7C10054BB56 /* NewsReaderMini */;
+			targetProxy = 249728EA2948B84A0054BB56 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		249728CA2947B7C30054BB56 /* Debug */ = {
@@ -341,6 +435,42 @@
 			};
 			name = Release;
 		};
+		249728ED2948B84A0054BB56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62R87RHN6R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ChadNewbry.NewsReaderMiniTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewsReaderMini.app/NewsReaderMini";
+			};
+			name = Debug;
+		};
+		249728EE2948B84A0054BB56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62R87RHN6R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ChadNewbry.NewsReaderMiniTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewsReaderMini.app/NewsReaderMini";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -362,7 +492,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		249728EC2948B84A0054BB56 /* Build configuration list for PBXNativeTarget "NewsReaderMiniTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				249728ED2948B84A0054BB56 /* Debug */,
+				249728EE2948B84A0054BB56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		249728DD2948B7E30054BB56 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		249728F02948B9BD0054BB56 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 249728DD2948B7E30054BB56 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 249728B62947B7C10054BB56 /* Project object */;
 }
